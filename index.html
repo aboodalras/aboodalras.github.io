@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Abdulla Alras · Web Developer</title>
+<meta name="description" content="Abdulla Alras builds websites and web apps for education, health and community organizations using Base44. Based in Saskatoon, SK.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f7f5f0;
+    --surface: #ffffff;
+    --ink: #1c1b19;
+    --muted: #5f5c55;
+    --line: #e4e0d6;
+    --accent: #1f5f4f;
+    --accent-soft: #e3efe9;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #141513;
+      --surface: #1d1f1c;
+      --ink: #efede7;
+      --muted: #a8a59c;
+      --line: #2e312c;
+      --accent: #7fc4ac;
+      --accent-soft: #1f2e28;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: 16px/1.6 Inter, system-ui, -apple-system, sans-serif;
+  }
+  a { color: inherit; }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 0 20px; }
+
+  nav { display: flex; justify-content: space-between; align-items: center; padding: 22px 0; }
+  nav .mark { font-family: Fraunces, Georgia, serif; font-weight: 700; font-size: 20px; text-decoration: none; }
+  nav ul { display: flex; gap: 22px; list-style: none; margin: 0; padding: 0; font-size: 15px; }
+  nav ul a { text-decoration: none; color: var(--muted); }
+  nav ul a:hover { color: var(--ink); }
+
+  header.hero { padding: 72px 0 64px; border-bottom: 1px solid var(--line); }
+  .eyebrow { font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); font-weight: 600; margin: 0 0 18px; }
+  h1 { font-family: Fraunces, Georgia, serif; font-weight: 700; font-size: clamp(36px, 6vw, 60px); line-height: 1.08; margin: 0 0 22px; letter-spacing: -.01em; }
+  .lede { font-size: 19px; color: var(--muted); max-width: 620px; margin: 0 0 32px; }
+  .btns { display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn { display: inline-block; padding: 12px 20px; border-radius: 999px; text-decoration: none; font-weight: 600; font-size: 15px; border: 1px solid var(--ink); }
+  .btn.primary { background: var(--ink); color: var(--bg); }
+  .btn:hover { opacity: .85; }
+
+  section { padding: 72px 0; border-bottom: 1px solid var(--line); }
+  h2 { font-family: Fraunces, Georgia, serif; font-weight: 500; font-size: 32px; margin: 0 0 8px; }
+  .sub { color: var(--muted); margin: 0 0 40px; }
+
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; }
+  .swatch { height: 120px; padding: 20px; display: flex; align-items: flex-end; color: #fff; font-family: Fraunces, Georgia, serif; font-size: 24px; font-weight: 700; }
+  .card .body { padding: 20px 22px 24px; display: flex; flex-direction: column; flex: 1; }
+  .tag { font-size: 12px; font-weight: 600; color: var(--accent); background: var(--accent-soft); padding: 3px 10px; border-radius: 999px; align-self: flex-start; margin-bottom: 12px; }
+  .card p { margin: 0 0 14px; color: var(--muted); font-size: 15px; }
+  .card ul { margin: 0 0 18px; padding-left: 18px; font-size: 14px; color: var(--muted); }
+  .card ul li { margin-bottom: 4px; }
+  .card .visit { margin-top: auto; font-weight: 600; font-size: 15px; text-decoration: none; color: var(--accent); }
+  .card .visit:hover { text-decoration: underline; }
+
+  .card.wide { grid-column: 1 / -1; }
+  .card.wide h3 { margin: 0 0 8px; font-family: Fraunces, Georgia, serif; font-size: 24px; }
+  .shots { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; padding: 18px 18px 0; background: linear-gradient(135deg,#132f6b,#1e4a96); padding-bottom: 18px; }
+  .shots figure { margin: 0; }
+  .shots img { width: 100%; display: block; border-radius: 10px; box-shadow: 0 6px 20px rgba(0,0,0,.25); }
+  .shots figcaption { color: #dfe7f7; font-size: 13px; margin-top: 8px; }
+  .services { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .tier { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 26px 24px; }
+  .tier.featured { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+  .tier h3 { margin: 0 0 4px; font-size: 18px; }
+  .price { font-family: Fraunces, Georgia, serif; font-size: 36px; font-weight: 700; margin: 6px 0 12px; }
+  .price span { font-family: Inter, sans-serif; font-size: 14px; color: var(--muted); font-weight: 400; }
+  .tier p { color: var(--muted); font-size: 15px; margin: 0; }
+  .note { margin-top: 22px; color: var(--muted); font-size: 15px; }
+
+  .about { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+  .about p { color: var(--muted); margin: 0 0 16px; }
+  .facts { list-style: none; padding: 0; margin: 0; }
+  .facts li { padding: 14px 0; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; gap: 16px; font-size: 15px; }
+  .facts li span:first-child { color: var(--muted); }
+  .facts li span:last-child { text-align: right; }
+
+  .contact { text-align: center; border-bottom: none; }
+  .contact .lede { margin-left: auto; margin-right: auto; }
+  .contact .btns { justify-content: center; }
+  footer { padding: 32px 0 48px; color: var(--muted); font-size: 14px; text-align: center; }
+
+  @media (max-width: 760px) {
+    nav ul { display: none; }
+    header.hero { padding: 40px 0 48px; }
+    section { padding: 52px 0; }
+    .grid, .services, .about, .shots { grid-template-columns: 1fr; }
+    .about { gap: 24px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav>
+    <a class="mark" href="#">Abdulla Alras</a>
+    <ul>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <header class="hero">
+    <p class="eyebrow">Web developer · Saskatoon, SK</p>
+    <h1>Websites and web apps for schools, clinics and the people they serve.</h1>
+    <p class="lede">I build polished, working sites and apps on Base44, from simple landing pages to full platforms with user accounts, booking systems and admin dashboards. Most of my work is in education and health, where clarity matters.</p>
+    <div class="btns">
+      <a class="btn primary" href="#work">See my work</a>
+      <a class="btn" href="#contact">Start a project</a>
+    </div>
+  </header>
+
+  <section id="work">
+    <h2>Selected work</h2>
+    <p class="sub">Live projects, most of which you can open and click through.</p>
+    <div class="grid">
+
+      <article class="card wide">
+        <div class="shots">
+          <figure><img src="atlas-modules.jpg" alt="Atlas for MMI learning modules page" loading="lazy"><figcaption>Learning modules</figcaption></figure>
+          <figure><img src="atlas-ai-practice.jpg" alt="Atlas for MMI AI practice page with individual questions and full mock MMIs" loading="lazy"><figcaption>AI practice and mock MMIs</figcaption></figure>
+        </div>
+        <div class="body">
+          <span class="tag">Learning platform · Developer</span>
+          <h3>Atlas for MMI learning platform</h3>
+          <p>The student learning platform for an MMI interview preparation course, used by 200+ students. Access is limited to enrolled students, so the screenshots show it from the inside.</p>
+          <ul>
+            <li>Learning modules, video library and article library</li>
+            <li>AI practice across 1,400+ questions, plus timed full-length mock MMIs with score reports</li>
+            <li>Peer feedback on shared answers, and live classrooms</li>
+            <li>In-app tutor booking with availability, confirmation and reminder emails, and calendar sync</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="swatch" style="background:linear-gradient(135deg,#b7791f,#e0a93b)">Masedora for Applications</div>
+        <div class="body">
+          <span class="tag">Web app · Founder &amp; developer</span>
+          <p>Helps students check their eligibility and chances at professional schools in Canada, the US, the UK, Ireland, Australia and the Caribbean.</p>
+          <ul>
+            <li>Applicant profiles with school-by-school eligibility checks</li>
+            <li>Links to official university admissions sources</li>
+            <li>Mentor session booking with instant confirmation</li>
+          </ul>
+          <a class="visit" href="https://masedora-for-applications.base44.app" target="_blank" rel="noopener">Visit the app →</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="swatch" style="background:linear-gradient(135deg,#2f4a7a,#4f73b3)">Masedora for CASPer</div>
+        <div class="body">
+          <span class="tag">Web app · Founder &amp; developer</span>
+          <p>A practice platform for the Casper situational judgment test, used by students applying to medicine and other health programs.</p>
+          <ul>
+            <li>Scenario-based practice in the test's format</li>
+            <li>Student accounts and practice history</li>
+            <li>Shared design system across the Masedora app family</li>
+          </ul>
+          <a class="visit" href="https://masedora-casper.base44.app" target="_blank" rel="noopener">Visit the app →</a>
+        </div>
+      </article>
+
+
+      <article class="card">
+        <div class="swatch" style="background:linear-gradient(135deg,#6b3a5b,#9a5a85)">ALSERAJ School</div>
+        <div class="body">
+          <span class="tag">Website · Developer</span>
+          <p>Website for a Saskatoon Arabic Saturday school that offers a high-school Arabic credit program.</p>
+          <ul>
+            <li>Program and enrollment information for families</li>
+            <li>Built for a non-technical team to keep up to date</li>
+          </ul>
+          <a class="visit" href="https://alseraj-school.base44.app" target="_blank" rel="noopener">Visit the site →</a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section id="services">
+    <h2>Services</h2>
+    <p class="sub">Clear packages, priced in USD. Not sure which fits? Ask and I'll tell you.</p>
+    <div class="services">
+      <div class="tier">
+        <h3>Starter</h3>
+        <div class="price">$50</div>
+        <p>A single-page site: who you are, what you offer, how to reach you. Good for a new business or event.</p>
+      </div>
+      <div class="tier featured">
+        <h3>Standard</h3>
+        <div class="price">$100</div>
+        <p>A multi-page website with contact or sign-up forms, built to look good on phones and easy for you to update.</p>
+      </div>
+      <div class="tier">
+        <h3>Web app</h3>
+        <div class="price">$200<span> and up</span></div>
+        <p>User accounts, dashboards, bookings and admin tools. Priced to the scope once we've talked it through.</p>
+      </div>
+    </div>
+    <p class="note">Ongoing changes and support are available at $25/hour.</p>
+  </section>
+
+  <section id="about">
+    <div class="about">
+      <div>
+        <h2>About</h2>
+        <p>I'm Abdulla, a developer based in Saskatoon. I started building web apps in 2025 and now run a small family of education apps under Masedora, alongside client work for schools and organizations.</p>
+        <p>My background is in health: a kinesiology degree from the University of Saskatchewan, a master's in public health in progress, and work as a surgical assistant. That shapes how I build. I care about clear flows, plain language and things that work for real people on the first try.</p>
+      </div>
+      <ul class="facts">
+        <li><span>Builds with</span><span>Base44, HTML/CSS, JavaScript</span></li>
+        <li><span>Focus</span><span>Education, health, community orgs</span></li>
+        <li><span>Location</span><span>Saskatoon, SK · works remotely</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2>Let's build something</h2>
+    <p class="lede">Tell me what you need and I'll reply with a plan and a price.</p>
+    <div class="btns">
+      <a class="btn primary" href="https://www.upwork.com/freelancers/~010418fcf068db2824" target="_blank" rel="noopener">Hire me on Upwork</a>
+      <a class="btn" href="https://github.com/aboodalras" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </section>
+</div>
+<footer>© 2026 Abdulla Alras</footer>
+</body>
+</html>
